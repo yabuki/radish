@@ -1,6 +1,22 @@
 # radish
 [NHKラジオ らじる★らじる](https://www.nhk.or.jp/radio/) / [radiko](http://radiko.jp/) / [ListenRadio](http://listenradio.jp/) / [渋谷のラジオ](https://shiburadi.com/) で現在配信中の番組を保存するシェルスクリプトです。なお配信形式と同じフォーマットで保存するため、別形式へのエンコードは行いません。
 
+**2025-09-30** 2025-09-24あたりから、このスクリプトが動かなくて困っていました。
+
+- [http://www.nhk.or.jp/radio/config/config_web.xml](https://gist.github.com/zixing8284/4ec2f633be7a4d89ae2ede0638e648c7)
+    - を読むと、<http://www.nhk.or.jp/radio/config/config_web.xml>の中身が変わっているようです。
+
+```
+ffmpeg -loglevel error \
+       -fflags +discardcorrupt \
+       -http_persistent 0 \
+       -http_multiple 1 \
+       -i "https://simul.drdi.st.nhk/live/4/joined/master.m3u8" \
+       -acodec copy -vn -bsf:a aac_adtstoasc \
+       -t 7 -y /tmp/a.m4a
+```
+これでOsaka NHKR2が録音できました。　
+
 
 # ※重要なお知らせ
 
