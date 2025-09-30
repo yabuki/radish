@@ -32,6 +32,20 @@ format_time() {
   printf "%02d:%02d:%02d" "${hour}" "${minute}" "0"
 }
 
+#######################################################################
+#                            main routine                             #
+#######################################################################
+# Argument none?
+if [ $# -lt 1 ]; then
+  show_usage
+  exit 1
+fi
+
+#######################################################################
+#                           Parse argument                            #
+#######################################################################
+
+
 duration=0
 output=""
 
@@ -55,7 +69,7 @@ fi
 #
 file_ext="m4a"
 if [ -z "${output}" ]; then
-  output="oska-nhkr2_$(date +%Y%m%d%H%M%S).${file_ext}"
+  output="osaka-nhkfm_$(date +%Y%m%d%H%M%S).${file_ext}"
 else
   # Fix file path extension
   echo "${output}" | grep -q -E "\\.${file_ext}$"
