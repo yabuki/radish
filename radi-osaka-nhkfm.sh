@@ -49,13 +49,14 @@ fi
 duration=0
 output=""
 
-while getopts d:o option; do
+while getopts "d:o:" option; do
   case "${option}" in
     d)
       duration="${OPTARG}"
       ;;
     o)
       output="${OPTARG}"
+      ;;
   esac
 done
 #
