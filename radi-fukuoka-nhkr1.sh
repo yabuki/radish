@@ -58,6 +58,8 @@ while getopts "d:o:" option; do
       ;;
   esac
 done
+# オプション分をシフトして残りの引数を取得
+shift $((OPTIND - 1))
 #
 echo "${duration}" | grep -q -E "^[0-9]+$"
 ret=$?
